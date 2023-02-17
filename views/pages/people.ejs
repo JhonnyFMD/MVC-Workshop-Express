@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+    <header>
+    <%- include('../partials/header'); %>
+    </header>
+
+    <main>
+    <h2>People</h2>
+    <a href="/person" class="btn btn-success float-right">Add New Person</a>
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Edit | Delete </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach((value) => { %>
+                <tr>
+                <th scope="row"><%= value.id_person %></th>
+                <td> <%= value.name %> </td>
+                <td> <%= value.last_name %> </td>
+                <td>
+                    <a href="/person_update/<%= value.id_person %>" class="btn btn-warning btn-xs">Edit</a>
+                    <a href="/person_delete/<%= value.id_person %>" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure To Delete ?')">Delete</a>
+                </td>
+                </tr>
+            <% }); %>
+        </tbody>
+        </table>
+    </main>
+
+</body>
+</html>
